@@ -101,132 +101,130 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
     .PostList {
         background-color: #e1e1e1;
+
+        a {
+            text-decoration: none;
+            color: black;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        > .loading {
+            text-align: center;
+            padding-top: 300px;
+        }
+
+        > .posts {
+            margin-top: 10px;
+            border-radius: 5px;
+            ul {
+                list-style: none;
+                width: 100%;
+                max-width: 1344px;
+                margin: 0 auto;
+                .toobar {
+                    padding-left: 10px;
+                    height: 40px;
+                    background-color: #f5f5f5;
+                    & > span {
+                        font-size: 14px;
+                        color: #80bd01;
+                        line-height: 40px;
+                        margin: 0 10px;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: #9e78c0;
+                        }
+
+                        &.active {
+                            padding: 3px 4px;
+                            border-radius: 3px;
+                            color: #fff;
+                            background: #80bd01;
+                        }
+                    }
+                }
+
+                li:not(:first-child) {
+                    padding: 10px;
+                    font-size: 15px;
+                    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, sans-serif !important;
+                    font-weight: 400;
+                    background-color: white;
+                    color: #333;
+                    border-top: 1px solid #f0f0f0;
+
+                    &:hover {
+                        background: #f5f5f5;;
+                    }
+
+                    span {
+                        line-height: 30px;
+                    }
+
+                    img {
+                        height: 30px;
+                        width: 30px;
+                        vertical-align: middle;
+                    }
+
+                    .allcount {
+                        width: 70px;
+                        display: inline-block;
+                        text-align: center;
+                        font-size: 12px;
+                    }
+
+                    .reply_count {
+                        color: #9e78c0;
+                        font-size: 14px;
+                    }
+
+                    .visit_count {
+                        font-size: 10px;
+                        color: #b4b4b4;
+                    }
+
+                    .put_good, .put_top {
+                        background: #80bd01;
+                        padding: 2px 4px;
+                        border-radius: 3px;
+                        color: #fff;
+                        font-size: 12px;
+                        margin-right: 10px;
+                    }
+
+                    .topiclist_tab {
+                        background-color: #e5e5e5;
+                        color: #999;
+                        padding: 2px 4px;
+                        border-radius: 3px;
+                        font-size: 12px;
+                        margin-right: 10px;
+                    }
+
+                    .last_reply {
+                        text-align: right;
+                        min-width: 50px;
+                        display: inline-block;
+                        white-space: nowrap;
+                        float: right;
+                        color: #778087;
+                        font-size: 12px;
+                    }
+                }
+
+                li:last-child:hover {
+                    background: white;
+                }
+
+            }
+        }
     }
 
-    .posts {
-        margin-top: 10px;
-        border-radius: 5px;
-    }
-
-    .PostList img {
-        height: 30px;
-        width: 30px;
-        vertical-align: middle;
-    }
-
-    ul {
-        list-style: none;
-        width: 100%;
-        max-width: 1344px;
-        margin: 0 auto;
-    }
-
-    ul li:not(:first-child) {
-        padding: 10px;
-        font-size: 15px;
-        font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, sans-serif !important;
-        font-weight: 400;
-        background-color: white;
-        color: #333;
-        border-top: 1px solid #f0f0f0;
-    }
-
-    li:not(:first-child):hover {
-        background: #f5f5f5;;
-    }
-
-    li:last-child:hover {
-        background: white;
-    }
-
-    li span {
-        line-height: 30px;
-    }
-
-    .allcount {
-        width: 70px;
-        display: inline-block;
-        text-align: center;
-        font-size: 12px;
-    }
-
-    .reply_count {
-        color: #9e78c0;
-        font-size: 14px;
-    }
-
-    .visit_count {
-        font-size: 10px;
-        color: #b4b4b4;
-    }
-
-    .put_good, .put_top {
-        background: #80bd01;
-        padding: 2px 4px;
-        border-radius: 3px;
-        color: #fff;
-        font-size: 12px;
-        margin-right: 10px;
-    }
-
-    .topiclist_tab {
-        background-color: #e5e5e5;
-        color: #999;
-        padding: 2px 4px;
-        border-radius: 3px;
-        font-size: 12px;
-        margin-right: 10px;
-    }
-
-    .last_reply {
-        text-align: right;
-        min-width: 50px;
-        display: inline-block;
-        white-space: nowrap;
-        float: right;
-        color: #778087;
-        font-size: 12px;
-    }
-
-    .toobar {
-        padding-left: 10px;
-        height: 40px;
-        background-color: #f5f5f5;
-    }
-
-    .toobar span {
-        font-size: 14px;
-        color: #80bd01;
-        line-height: 40px;
-        margin: 0 10px;
-        cursor: pointer;
-    }
-
-    .toobar span:hover {
-        color: #9e78c0;
-    }
-
-    .toobar span.active {
-        padding: 3px 4px;
-        border-radius: 3px;
-        color: #fff;
-        background: #80bd01;
-    }
-
-    a {
-        text-decoration: none;
-        color: black;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-
-    .loading {
-        text-align: center;
-        padding-top: 300px;
-    }
 </style>
