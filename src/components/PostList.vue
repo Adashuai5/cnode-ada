@@ -23,9 +23,15 @@
                     <span :class="[{put_good:(post.good === true)},{put_top:(post.top === true)},{topiclist_tab:(post.good  !== true && post.top  !== true)}]">
                         <span>{{post | tabFormatter}}</span>
                     </span>
-                    <span>
-                        {{post.title}}
-                    </span>
+                    <router-link :to="{name:'post_content',
+                    params:{
+                        id: post.id,
+                        name: post.author.loginname
+                    }}">
+                        <span>
+                            {{post.title}}
+                        </span>
+                    </router-link>
                     <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
                 </li>
             </ul>
@@ -67,7 +73,6 @@
 <style scoped lang="scss">
     .PostList {
         background-color: #e1e1e1;
-
         a {
             text-decoration: none;
             color: black;
@@ -83,7 +88,6 @@
 
         > .posts {
             margin-top: 10px;
-            border-radius: 5px;
             ul {
                 list-style: none;
                 width: 100%;
@@ -93,6 +97,7 @@
                     padding-left: 10px;
                     height: 40px;
                     background-color: #f5f5f5;
+                    border-radius: 3px 3px 0 0;
                     & > span {
                         font-size: 14px;
                         color: #80bd01;
@@ -121,7 +126,7 @@
                     background-color: white;
                     color: #333;
                     border-top: 1px solid #f0f0f0;
-
+                    border-radius: 0 0 3px 3px;
                     &:hover {
                         background: #f5f5f5;;
                     }
