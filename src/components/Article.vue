@@ -5,29 +5,47 @@
         </div>
         <div v-else>
             <div class="topic_header">
-                <div class="topic_title"><span :class="[{put_good:(post.good === true)},{put_top:(post.top === true)}]">
+                <div class="header">
+                    <div class="topic_title"><span
+                            :class="[{put_good:(post.good === true)},{put_top:(post.top === true)}]">
                         <span>{{post | tabFormatter}}</span>
                     </span>{{post.title}}
+                    </div>
+                    <ul>
+                        <li><span>发布于 {{post.create_at | formatDate}}</span></li>
+                        <li>&nbsp<span>作者
+                            <router-link :to="{name:'user_info',params:{
+                                name: post.author.loginname
+                            }}">
+                                {{post.author.loginname}}
+                            </router-link>
+                        </span></li>
+                        <li>&nbsp<span>{{post.visit_count}} 次浏览</span></li>
+                        <li>&nbsp<span>来自 {{post | tabFormatter}}</span></li>
+                    </ul>
                 </div>
-                <ul>
-                    <li><span>发布于 {{post.create_at | formatDate}}</span></li>
-                    <li>&nbsp<span>作者 {{post.author.loginname}}</span></li>
-                    <li>&nbsp<span>{{post.visit_count}} 次浏览</span></li>
-                    <li>&nbsp<span>来自 {{post | tabFormatter}}</span></li>
-                </ul>
                 <div v-html="post.content" class="topic_content"></div>
             </div>
             <div id="reply">
                 <div class="topbar">{{post.reply_count}} 回复</div>
                 <div class="replySec" v-for="(reply,index) in post.replies" :key="reply.id">
                     <div class="replyUp clearfix">
-                        <img :src="reply.author.avatar_url">
-                        <span> {{reply.author.loginname}} </span>
+                        <router-link :to="{name:'user_info',params:{
+                            name: reply.author.loginname
+                            }
+                        }">
+                            <img :src="reply.author.avatar_url">
+                        </router-link>
+                        <router-link :to="{name:'user_info',params:{
+                            name: reply.author.loginname
+                            }
+                        }"><span class="loginname">{{reply.author.loginname}} </span>
+                        </router-link>
                         <span> {{index+1}} 楼</span><span>•{{reply.create_at | formatDate}} </span>
                         <span v-if="reply.author.loginname === post.author.loginname" class="author">作者</span>
                         <span v-if="reply.ups.length>0" class="ups">
                             <img src="../assets/submit.svg" class="submit"><span
-                                class="ups_length clearfix">{{reply.ups.length}}</span>
+                                class="ups_length">{{reply.ups.length}}</span>
                         </span>
                         <span v-else>
                         </span>
@@ -54,7 +72,7 @@
                     .then((res) => {
                         this.isLoading = false
                         this.post = res.data.data
-                        console.log(res);
+                        // console.log(res);
                     })
                     .catch((err) => {
                         alert(err)
@@ -81,9 +99,6 @@
         a {
             text-decoration: none;
             color: black;
-            &:hover {
-                text-decoration: underline;
-            }
         }
 
         > .loading {
@@ -93,56 +108,65 @@
 
         .topic_header {
             background: #fff;
-            padding: 10px;
             border-radius: 3px;
-            .topic_title {
-                font-size: 22px;
-                font-weight: 700;
-                margin: 8px 0;
-
-                .put_good, .put_top {
-                    background: #80bd01;
-                    padding: 2px 4px;
-                    border-radius: 3px;
-                    color: #fff;
-                    font-size: 12px;
-                    margin-right: 10px;
+            .header {
+                padding: 10px;
+                .topic_title {
+                    font-size: 22px;
+                    font-weight: 700;
+                    margin: 8px 0;
+                    .put_good, .put_top {
+                        background: #80bd01;
+                        padding: 1px 4px;
+                        border-radius: 3px;
+                        color: #fff;
+                        font-size: 12px;
+                        margin-right: 8px;
+                    }
                 }
-            }
+                ul {
+                    list-style: none;
+                    margin: 6px 0px 1em;
+                    li {
+                        display: inline-block;
+                        font-size: 12px;
+                        color: #838383;
+                        span:before {
+                            content: '• ';
+                        }
 
-            ul {
-                list-style: none;
-                margin: 6px 0px;
-                li {
-                    display: inline-block;
-                    font-size: 12px;
-                    color: #838383;
-                    span:before {
-                        content: '• ';
+                        a {
+                            color: #838383;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+
                     }
                 }
             }
 
             .topic_content {
-                line-height: 2em;
                 border-top: 1px solid #e5e5e5;
+                line-height: 2em;
                 padding: 0 10px;
-                .markdown-text img {
-                    width: 92% !important;
+                .markdown-text {
+                    padding: 10px;
+                    img {
+                        width: 92% !important;
+                    }
                 }
+
             }
         }
 
         #reply {
             background: #fff;
-            border-radius: 3px;
             margin-top: 15px;
             .topbar {
                 padding: 10px;
                 background-color: #f6f6f6;
-                height: 16px;
-                font-size: 12px;
-                margin-top: 10px;
+                font-size: 14px;
             }
 
             .replySec {
@@ -166,9 +190,17 @@
                         font-size: 12px;
                     }
 
-                    a, span {
+                    span {
                         font-size: 13px;
                         color: #666;
+                    }
+
+                    .loginname {
+                        padding-left: 10px;
+                        font-weight: 700;
+                        &:hover {
+                            color: #385f8a;
+                        }
                     }
 
                     .clearfix::after {
@@ -188,6 +220,9 @@
                                 opacity: .6;
                             }
                         }
+                        .ups_length {
+                            color: #666;
+                        }
                     }
                 }
 
@@ -198,6 +233,7 @@
                     overflow: auto;
                     padding-left: 3em;
                 }
+
             }
         }
     }
