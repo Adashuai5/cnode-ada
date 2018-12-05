@@ -15,7 +15,12 @@
                     </div>
                 </li>
                 <li v-for="post in posts" :key="post.id">
-                    <img :src="post.author.avatar_url">
+                    <router-link :to="{name:'user_info',params:{
+                        name: post.author.loginname
+                        }
+                    }">
+                        <img :src="post.author.avatar_url">
+                    </router-link>
                     <span class="allcount">
                         <span class="reply_count">{{post.reply_count}}</span>
                         /<span class="visit_count">{{post.visit_count}}</span>
@@ -28,7 +33,7 @@
                         id: post.id,
                         name: post.author.loginname
                     }}">
-                        <span>
+                        <span class="topic_link">
                             {{post.title}}
                         </span>
                     </router-link>
@@ -61,12 +66,12 @@
                 }).then(res => {
                     this.isLoading = false
                     this.posts = res.data.data
-                }).catch((err => {
+                    // console.log(res);
+                }).catch((err) => {
                     alert(err);
-                }))
+                })
             }
         }
-
     }
 </script>
 
@@ -76,8 +81,12 @@
         a {
             text-decoration: none;
             color: black;
+            font-size: 16px;
             &:hover {
                 text-decoration: underline;
+            }
+            &:visited {
+                color: #888;
             }
         }
 
@@ -94,15 +103,13 @@
                 max-width: 1344px;
                 margin: 0 auto;
                 .toobar {
-                    padding-left: 10px;
-                    height: 40px;
                     background-color: #f5f5f5;
                     border-radius: 3px 3px 0 0;
+                    padding: 10px;
                     & > span {
                         font-size: 14px;
                         color: #80bd01;
-                        line-height: 40px;
-                        margin: 0 10px;
+                        margin: 0 12px;
                         cursor: pointer;
 
                         &:hover {
@@ -136,6 +143,7 @@
                     }
 
                     img {
+                        border-radius: 3px;
                         height: 30px;
                         width: 30px;
                         vertical-align: middle;
@@ -164,7 +172,6 @@
                         border-radius: 3px;
                         color: #fff;
                         font-size: 12px;
-                        margin-right: 10px;
                     }
 
                     .topiclist_tab {
@@ -173,7 +180,6 @@
                         padding: 2px 4px;
                         border-radius: 3px;
                         font-size: 12px;
-                        margin-right: 10px;
                     }
 
                     .last_reply {
