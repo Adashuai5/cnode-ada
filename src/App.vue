@@ -1,7 +1,8 @@
 <template>
     <div id="app">
         <Header></Header>
-        <div class="main">
+        <div class="main clearfix">
+            <router-view name="slidebar"></router-view>
             <router-view name="main"></router-view>
         </div>
     </div>
@@ -22,6 +23,12 @@
 <style>
     * {
         margin: 0;padding: 0;
+    }
+
+    clearfix::after {
+        content: '';
+        display: block;
+        clear: both;
     }
 
     body {
