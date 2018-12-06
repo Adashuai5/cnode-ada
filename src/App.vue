@@ -26,6 +26,7 @@
 
     body {
         background: #E1E1E1;
+        font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, sans-serif !important;
     }
 
     .main {
