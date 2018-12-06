@@ -8,14 +8,14 @@
                 <a href="/">主页</a>
                 <span class="divider">/</span>
             </div>
-            <section class=".clearfix">
+            <section class="clearfix">
                 <img :src="userinfo.avatar_url" alt="头像">
                 <span class="loginname">{{userinfo.loginname}}</span>
                 <p class="user_profile">{{userinfo.score}} 积分</p>
                 <p class="col_fade">注册时间 {{userinfo.create_at | formatDate}}</p>
             </section>
             <div class="topics">
-                <p class="topics-title">最近创建的话题</p>
+                <p class="topics_title">最近创建的话题</p>
 
                 <ul>
                     <li v-for="item in userinfo.recent_topics" :key="item.id">
@@ -36,7 +36,7 @@
                 </ul>
             </div>
             <div class="replies">
-                <p class="replies-title">最近参与的话题</p>
+                <p class="replies_title">最近参与的话题</p>
                 <ul>
                     <li v-for="item in userinfo.recent_replies" :key="item.id">
                         <router-link :to="{name:'user_info',params:{
@@ -90,9 +90,9 @@
 
 <style scoped lang="scss">
     .UserInfo {
+        padding-right: 20px;
         .userInfomation {
             background: white;
-            width: 75%;
             margin: 10px auto;
             .header {
                 padding: 10px;
@@ -109,11 +109,13 @@
                     color: #ccc;
                 }
             }
+
             clearfix::after {
                 content: '';
                 display: block;
                 clear: both;
             }
+
             section {
                 font-size: 14px;
                 padding: 10px;
@@ -130,6 +132,7 @@
                 }
 
                 .user_profile {
+                    font-size: 14px;
                     padding: 10px;
                     margin-top: 20px;
                     clear: left;
@@ -166,9 +169,9 @@
             .replies,
             .topics {
                 font-size: 0.72rem;
-                border-top: 10px #DDDDDD solid;
-                .topics-title,
-                .replies-title {
+                border-top: 10px #ddd solid;
+                .topics_title,
+                .replies_title {
                     padding: 12px;
                     background-color: rgba(212, 205, 205, 0.17);
                     font-size: 0.75rem;

@@ -23,7 +23,7 @@
                     </router-link>
                     <span class="allcount">
                         <span class="reply_count">{{post.reply_count}}</span>
-                        /<span class="visit_count">{{post.visit_count}}</span>
+                        /<span class="visit_count"> {{post.visit_count}}</span>
                     </span>
                     <span :class="[{put_good:(post.good === true)},{put_top:(post.top === true)},{topiclist_tab:(post.good  !== true && post.top  !== true)}]">
                         <span>{{post | tabFormatter}}</span>
@@ -32,10 +32,8 @@
                     params:{
                         id: post.id,
                         name: post.author.loginname
-                    }}">
-                        <span class="topic_link">
-                            {{post.title}}
-                        </span>
+                    }}" class="topic_link">
+                        {{post.title}}
                     </router-link>
                     <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
                 </li>
@@ -82,6 +80,7 @@
             text-decoration: none;
             color: black;
             font-size: 16px;
+
             &:hover {
                 text-decoration: underline;
             }
@@ -138,8 +137,15 @@
                         background: #f5f5f5;;
                     }
 
-                    span {
+                    .topic_link {
+                        padding-left: 5px;
                         line-height: 30px;
+                        vertical-align: middle;
+                        display: inline-block;
+                        max-width: 752px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                     }
 
                     img {

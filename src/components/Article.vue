@@ -82,6 +82,11 @@
         beforeMount() {
             this.isLoading = true
             this.getArticleData()
+        },
+        watch:{
+            '$route'(to,from){
+                this.getArticleData()
+            }
         }
     }
 </script>
@@ -92,7 +97,7 @@
     .Article {
         background-color: #e1e1e1;
         &:not(:first-child) {
-            margin-right: 340px;
+            margin-right: 305px;
             margin-top: 15px;
         }
 
@@ -151,9 +156,10 @@
                 line-height: 2em;
                 padding: 0 10px;
                 .markdown-text {
+                    margin: 10px;
                     padding: 10px;
                     img {
-                        width: 92% !important;
+                        max-width: 100% !important;
                     }
                 }
 
