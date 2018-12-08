@@ -6,10 +6,10 @@
                 <li>
                     <div class="toobar">
                         <span class="active">全部</span>
-                        <span>精华</span>
-                        <span>分享</span>
-                        <span>问答</span>
-                        <span>招聘</span>
+                        <span @click="alert">精华</span>
+                        <span @click="alert">分享</span>
+                        <span @click="alert">问答</span>
+                        <span @click="alert">招聘</span>
                     </div>
                 </li>
                 <li v-for="post in posts" :key="post.id">
@@ -76,6 +76,9 @@
             renderPage(value){
                 this.postPage = value
                 this.getData()
+            },
+            alert(){
+                alert(`由于该页与'全部'页面完全一致，暂时未做。。`)
             }
         },
         beforeMount() {

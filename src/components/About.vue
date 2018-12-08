@@ -29,6 +29,7 @@
 <style scoped lang="scss">
     .about {
         border-radius: 3px;
+        margin-bottom: 43vh;
         a {
             color: #80bd01;
             text-decoration: none;
@@ -37,12 +38,12 @@
             }
         }
         background: white;
-        margin: 10px auto;
+        margin-left: auto;
+        margin-right: auto;
         font-size: 14px;
         .header {
             padding: 10px;
             background-color: #f6f6f6;
-
             .divider {
                 padding: 0 5px;
                 color: #ccc;
@@ -53,9 +54,10 @@
         }
         main {
             padding: 10px;
-            section{
+            section {
                 margin: 10px;
                 h1 {
+                    padding-bottom: 8px;
                     border-bottom: 1px solid #e5e5e5;
                 }
                 p {

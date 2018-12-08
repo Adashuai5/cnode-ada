@@ -5,6 +5,11 @@
             <router-view name="slidebar"></router-view>
             <router-view name="main"></router-view>
         </div>
+        <footer>
+            <div class="footer_main">
+                © zhouyuanda.top 2018 wechat:ddlyf873606339
+            </div>
+        </footer>
     </div>
 </template>
 
@@ -33,6 +38,7 @@
     }
 
     body {
+        min-height: 100vh;
         background: #E1E1E1;
         font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, sans-serif !important;
     }
@@ -44,4 +50,23 @@
         margin: 15px auto;
         min-height: 400px;
     }
+
+    footer {
+        clear: both;
+        background: #fff;
+    }
+
+    .footer_main {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+        max-width: 1400px;
+        min-width: 960px;
+        margin: 0 auto;
+        color: #e2e2e2;
+        padding: 22px 0;
+        font-size: 13px;
+        line-height: 2em;
+    }
+
 </style>
