@@ -1,7 +1,6 @@
 <template>
     <div class="Article">
-        <div v-if="isLoading" id="loading"></div>
-        <div v-else>
+        <div>
             <div class="topic_header">
                 <div class="header">
                     <div class="topic_title"><span
@@ -60,7 +59,6 @@
         name: "Aricle",
         data() {
             return {
-                isLoading: false,
                 post: {}
             }
         },
@@ -68,9 +66,7 @@
             getArticleData() {
                 this.$axios.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
                     .then((res) => {
-                        this.isLoading = false
                         this.post = res.data.data
-                        // console.log(res);
                     })
                     .catch((err) => {
                         alert(err)
@@ -78,7 +74,6 @@
             }
         },
         beforeMount() {
-            this.isLoading = true
             this.getArticleData()
         },
         watch: {
@@ -91,7 +86,6 @@
 
 <style lang="scss">
     @import url('../assets/markdown-github.css');
-    @import url('../assets/loading.css');
 
     .Article {
         background-color: #e1e1e1;
@@ -104,6 +98,7 @@
             text-decoration: none;
             color: black;
         }
+        @import url('../assets/loading.css');
 
         .topic_header {
             background: #fff;
