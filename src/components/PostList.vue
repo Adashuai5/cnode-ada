@@ -36,7 +36,7 @@
                     <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
                 </li>
                 <li>
-                    <Pagination></Pagination>
+                    <Pagination @handlePage="renderPage"></Pagination>
                 </li>
             </ul>
         </div>
@@ -44,23 +44,26 @@
 </template>
 
 <script>
+    import Pagination from './Pagination'
+
     export default {
         name: "Postlist",
         data() {
             return {
                 isLoading: false,
+                postPage: 1,
                 posts: []
             }
         },
-        beforeMount() {
-            this.isLoading = true
-            this.getData()
+        components: {
+            Pagination
         },
         methods: {
             getData() {
                 this.$axios.get('https://cnodejs.org/api/v1/topics', {
                     params: {
-                        page: 1,
+                        page: this.postPage,
+                        limit: 20
                     }
                 }).then(res => {
                     this.isLoading = false
@@ -69,7 +72,15 @@
                 }).catch((err) => {
                     alert(err);
                 })
+            },
+            renderPage(value){
+                this.postPage = value
+                this.getData()
             }
+        },
+        beforeMount() {
+            this.isLoading = true
+            this.getData()
         }
     }
 </script>
@@ -195,8 +206,12 @@
                     }
                 }
 
-                li:last-child:hover {
-                    background: white;
+                li:last-child {
+                    border-radius: 0 0 3px 3px;
+                    border-top: none;
+                    &:hover {
+                        background: white;
+                    }
                 }
             }
         }
