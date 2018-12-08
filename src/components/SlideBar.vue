@@ -64,7 +64,6 @@
         name: "SlideBar",
         data() {
             return {
-                isLoading: false,
                 userinfo: {}
             }
         },
@@ -72,7 +71,6 @@
             getSlideBarData() {
                 this.$axios.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
                     .then(res => {
-                        this.isLoading = false;
                         this.userinfo = res.data.data;
                         // console.log(res);
                     })
@@ -94,14 +92,12 @@
             }
         },
         beforeMount() {
-            this.isLoading = true;
-            this.getSlideBarData();
+            this.getSlideBarData()
         }
     }
 </script>
 
 <style scoped lang="scss">
-
     .autherinfo {
         width: 290px;
         float: right;

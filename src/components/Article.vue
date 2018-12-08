@@ -1,8 +1,6 @@
 <template>
     <div class="Article">
-        <div class="loading" v-if="isLoading">
-            <img src="../assets/loading.gif">
-        </div>
+        <div v-if="isLoading" id="loading"></div>
         <div v-else>
             <div class="topic_header">
                 <div class="header">
@@ -85,7 +83,6 @@
         },
         watch: {
             '$route'(to, from) {
-                this.isLoading = true
                 this.getArticleData()
             }
         }
@@ -94,6 +91,7 @@
 
 <style lang="scss">
     @import url('../assets/markdown-github.css');
+    @import url('../assets/loading.css');
 
     .Article {
         background-color: #e1e1e1;
@@ -105,11 +103,6 @@
         a {
             text-decoration: none;
             color: black;
-        }
-
-        > .loading {
-            text-align: center;
-            padding-top: 300px;
         }
 
         .topic_header {

@@ -1,8 +1,6 @@
 <template>
     <div class="PostList">
-        <div class="loading" v-if="isLoading">
-            <img src="../assets/loading.gif">
-        </div>
+        <div id="loading" v-if="isLoading"></div>
         <div class="posts" v-else>
             <ul>
                 <li>
@@ -36,6 +34,9 @@
                         {{post.title}}
                     </router-link>
                     <span class="last_reply">{{post.last_reply_at | formatDate}}</span>
+                </li>
+                <li>
+                    <Pagination></Pagination>
                 </li>
             </ul>
         </div>
@@ -74,6 +75,7 @@
 </script>
 
 <style scoped lang="scss">
+    @import url('../assets/loading.css');
     .PostList {
         background-color: #e1e1e1;
         a {
@@ -87,11 +89,6 @@
             &:visited {
                 color: #888;
             }
-        }
-
-        > .loading {
-            text-align: center;
-            padding-top: 300px;
         }
 
         > .posts {
@@ -132,7 +129,6 @@
                     background-color: white;
                     color: #333;
                     border-top: 1px solid #f0f0f0;
-                    border-radius: 0 0 3px 3px;
                     &:hover {
                         background: #f5f5f5;;
                     }
@@ -202,7 +198,6 @@
                 li:last-child:hover {
                     background: white;
                 }
-
             }
         }
     }

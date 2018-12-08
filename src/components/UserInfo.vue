@@ -1,8 +1,6 @@
 <template>
     <div class="UserInfo">
-        <div class="loading" v-if="isLoading">
-            <img src="../assets/loading.gif">
-        </div>
+        <div id="loading" v-if="isLoading"></div>
         <div v-else class="userInfomation">
             <div class="header">
                 <a href="/">主页</a>
@@ -89,6 +87,7 @@
 </script>
 
 <style scoped lang="scss">
+    @import url('../assets/loading.css');
     .UserInfo {
         padding-right: 20px;
         .userInfomation {

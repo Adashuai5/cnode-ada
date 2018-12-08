@@ -1,0 +1,47 @@
+@keyframes aliceTumbling {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#loading {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(0, 0, 0, 1) 50%,
+    rgba(0, 0, 0, 1) 100%);
+    position: relative;
+    margin: 300px auto 50px;
+    animation: aliceTumbling infinite 1s linear;
+}
+
+#loading::before {
+    content: '';
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 25%;
+    background: white;
+    border: 20px solid black;
+}
+
+#loading::after {
+    content: '';
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    background: black;
+    border: 20px solid white;
+}
+
+
