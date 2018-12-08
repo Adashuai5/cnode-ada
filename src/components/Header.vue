@@ -2,11 +2,9 @@
     <div class="header">
         <div class="header-inner">
             <div class="container clearfix">
-                <a href="/" class="brand">
-                    <router-link :to="{name: 'root'}">
-                        <img src="../assets/cnode-ada.svg" alt="">
-                    </router-link>
-                </a>
+                <router-link :to="{name: 'root'}" class="brand">
+                    <img src="../assets/cnode-ada.svg" alt="">
+                </router-link>
                 <ul class="navbar">
                     <li>
                         <router-link :to="{name: 'root'}">首页</router-link>
