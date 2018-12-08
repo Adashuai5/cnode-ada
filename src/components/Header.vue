@@ -3,10 +3,14 @@
         <div class="header-inner">
             <div class="container clearfix">
                 <a href="/" class="brand">
-                    <img src="../assets/cnode-ada.svg" alt="">
+                    <router-link :to="{name: 'root'}">
+                        <img src="../assets/cnode-ada.svg" alt="">
+                    </router-link>
                 </a>
                 <ul class="navbar">
-                    <li><a href="/">首页</a></li>
+                    <li>
+                        <router-link :to="{name: 'root'}">首页</router-link>
+                    </li>
                     <!--<li><a href="#">新手入门</a></li>-->
                     <!--<li><a href="#">API</a></li>-->
                     <li>
