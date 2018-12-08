@@ -24,7 +24,7 @@
                         <li>&nbsp<span>来自 {{post | tabFormatter}}</span></li>
                     </ul>
                 </div>
-                <div v-html="post.content" class="topic_content"></div>
+                <div v-html="post.content" class="topic_content" id="content"></div>
             </div>
             <div id="reply">
                 <div class="topbar">{{post.reply_count}} 回复</div>
@@ -121,9 +121,10 @@
                     font-size: 22px;
                     font-weight: 700;
                     margin: 8px 0;
+                    width: 75%;
                     .put_good, .put_top {
                         background: #80bd01;
-                        padding: 1px 4px;
+                        padding: 2px 4px;
                         border-radius: 3px;
                         color: #fff;
                         font-size: 12px;
@@ -132,7 +133,7 @@
                 }
                 ul {
                     list-style: none;
-                    margin: 6px 0px 1em;
+                    margin: 6px 0px;
                     li {
                         display: inline-block;
                         font-size: 12px;
@@ -154,11 +155,9 @@
 
             .topic_content {
                 border-top: 1px solid #e5e5e5;
-                line-height: 2em;
-                padding: 0 10px;
+                padding: 10px;
                 .markdown-text {
                     margin: 10px;
-                    padding: 10px;
                     img {
                         max-width: 100% !important;
                     }
