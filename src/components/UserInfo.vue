@@ -89,10 +89,9 @@
 <style scoped lang="scss">
     @import url('../assets/loading.css');
     .UserInfo {
-        padding-right: 20px;
         .userInfomation {
+            font-size: 14px;
             background: white;
-            margin: 10px auto;
             .header {
                 padding: 10px;
                 background-color: #f6f6f6;
@@ -116,7 +115,6 @@
             }
 
             section {
-                font-size: 14px;
                 padding: 10px;
                 border-top: 1px solid #e5e5e5;
                 img {
@@ -131,7 +129,6 @@
                 }
 
                 .user_profile {
-                    font-size: 14px;
                     padding: 10px;
                     margin-top: 20px;
                     clear: left;
@@ -167,20 +164,18 @@
 
             .replies,
             .topics {
-                font-size: 0.72rem;
-                border-top: 10px #ddd solid;
+                font-size: 0.75rem;
+                border-top: 14px #ddd solid;
                 .topics_title,
                 .replies_title {
                     padding: 12px;
                     background-color: rgba(212, 205, 205, 0.17);
-                    font-size: 0.75rem;
                     margin: 0;
                     border-radius: 3px 3px 0 0;
                 }
                 ul > li {
                     padding: 4px 0 4px 12px;
                     white-space: nowrap;
-                    font-size: 0.72rem;
                     text-overflow: ellipsis;
                     overflow: hidden;
                     line-height: 30px;
