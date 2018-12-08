@@ -1,0 +1,69 @@
+<template>
+    <div class="about">
+        <div class="header">
+            <a href="/">主页</a>
+            <span class="divider">/</span>
+            <span class="title">关于</span>
+        </div>
+        <main>
+            <section>
+                <h1>关于 cnode-ada</h1>
+                <p>cnode-ada 是我在学习 vue 过程中，尝试仿照 Cnode社区 做的一个简单前端项目。</p>
+                <p>该项目使用vue.js技术栈：<strong>vue-cli3/vue2/axios/vue-router/es6/yarn/scss</strong>，调用 cnode社区提供的Api为接口。</p>
+                <p>其中囊括了 PosltList 主列表；Article 文章的详情页；SlideBar 侧边栏；UserInfo 用户个人信息；Psgination 分页组件等主要组件。</p>
+            </section>
+            <section>
+                <h1>关于我</h1>
+                <p>访问 <a href="https://github.com/Adashuai5">github</a></p>
+            </section>
+        </main>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "About"
+    }
+</script>
+
+<style scoped lang="scss">
+    .about {
+        border-radius: 3px;
+        a {
+            color: #80bd01;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        background: white;
+        margin: 10px auto;
+        font-size: 14px;
+        .header {
+            padding: 10px;
+            background-color: #f6f6f6;
+
+            .divider {
+                padding: 0 5px;
+                color: #ccc;
+            }
+            .title {
+                color: #999;
+            }
+        }
+        main {
+            padding: 10px;
+            section{
+                margin: 10px;
+                h1 {
+                    border-bottom: 1px solid #e5e5e5;
+                }
+                p {
+                    font-size: 15px;
+                    line-height: 2em;
+                    overflow: auto;
+                }
+            }
+        }
+    }
+</style>
