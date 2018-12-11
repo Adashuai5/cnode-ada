@@ -52,20 +52,19 @@
     }
 
     footer {
-        clear: both;
-        background: #fff;
+        padding: 5vh 0;
+        text-align: center;
+        background: white;
     }
 
     .footer_main {
-        display: flex;
-        justify-content: center;
         width: 90%;
         max-width: 1400px;
         min-width: 960px;
         margin: 0 auto;
         color: #e2e2e2;
         padding: 22px 0;
-        font-size: 13px;
+        font-size: 14px;
         line-height: 2em;
     }
 
@@ -75,7 +74,7 @@
             min-height: 0;
         }
         footer {
-            margin: 0 5px 5px;
+            display: none;
         }
 
     }
