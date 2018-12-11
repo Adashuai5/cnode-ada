@@ -73,11 +73,11 @@
                     alert(err);
                 })
             },
-            renderPage(value){
+            renderPage(value) {
                 this.postPage = value
                 this.getData()
             },
-            alert(){
+            alert() {
                 alert(`由于该页与'全部'页面完全一致，暂时未做。。`)
             }
         },
@@ -90,6 +90,45 @@
 
 <style scoped lang="scss">
     @import url('../assets/loading.css');
+
+    @media (max-width: 979px) {
+        .PostList {
+            width: 100%;
+            min-width: 0;
+            .posts {
+                margin: 0 5px;
+                ul {
+                    list-style: none;
+                    width: 100%;
+                    max-width: 979px;
+                    margin: 0 auto;
+                    .toobar {
+                        background-color: #f5f5f5;
+                        border-radius: 3px 3px 0 0;
+                        padding: 10px;
+                        & > span {
+                            font-size: 14px;
+                            color: #80bd01;
+                            margin: 0 12px;
+                            cursor: pointer;
+
+                            &:hover {
+                                color: #9e78c0;
+                            }
+
+                            &.active {
+                                padding: 3px 4px;
+                                border-radius: 3px;
+                                color: #fff;
+                                background: #80bd01;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .PostList {
         background-color: #e1e1e1;
         a {

@@ -17,6 +17,18 @@
                     <!--<li><a href="#">注册</a></li>-->
                     <!--<li><a href="#">登录</a></li>-->
                 </ul>
+                <ul class="navbar2">
+                    <li>
+                        <router-link :to="{name: 'root'}">首页</router-link>
+                    </li>
+                    <!--<li><a href="#">新手入门</a></li>-->
+                    <!--<li><a href="#">API</a></li>-->
+                    <li>
+                        <router-link :to="{name: 'about'}">关于</router-link>
+                    </li>
+                    <!--<li><a href="#">注册</a></li>-->
+                    <!--<li><a href="#">登录</a></li>-->
+                </ul>
             </div>
         </div>
     </div>
@@ -81,6 +93,47 @@
                     }
                 }
             }
+        }
+    }
+    @media (max-width: 979px) {
+        .header {
+            margin: 0 5px;
+            z-index: 999;
+            width: auto !important;
+            min-width: 310px;
+            .container {
+                width: 100%;
+                min-width: 0;
+                .brand{
+                    float: none;
+                    margin: 0 auto;
+                }
+                .navbar {
+                    display: none;
+                }
+                .navbar2 {
+                    clear: both;
+                    float: none;
+                    > li {
+                        display: inline-flex;
+                        line-height: 20px;
+                        padding: 10px 15px;
+                        > a {
+                            text-decoration: none;
+                            color: #ccc;
+                            &:hover {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (min-width: 980px) {
+        .navbar2 {
+            display: none;
         }
     }
 </style>

@@ -69,4 +69,14 @@
         line-height: 2em;
     }
 
+    @media (max-width: 979px) {
+        .main{
+            margin: 20px auto;
+            min-height: 0;
+        }
+        footer {
+            margin: 0 5px 5px;
+        }
+
+    }
 </style>
