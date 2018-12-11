@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="header-inner">
-            <div class="container clearfix">
+            <div class="container">
                 <router-link :to="{name: 'root'}" class="brand">
                     <img src="../assets/cnode-ada.svg" alt="">
                 </router-link>
@@ -9,26 +9,11 @@
                     <li>
                         <router-link :to="{name: 'root'}">首页</router-link>
                     </li>
-                    <!--<li><a href="#">新手入门</a></li>-->
-                    <!--<li><a href="#">API</a></li>-->
                     <li>
                         <router-link :to="{name: 'about'}">关于</router-link>
                     </li>
-                    <!--<li><a href="#">注册</a></li>-->
-                    <!--<li><a href="#">登录</a></li>-->
                 </ul>
-                <ul class="navbar2">
-                    <li>
-                        <router-link :to="{name: 'root'}">首页</router-link>
-                    </li>
-                    <!--<li><a href="#">新手入门</a></li>-->
-                    <!--<li><a href="#">API</a></li>-->
-                    <li>
-                        <router-link :to="{name: 'about'}">关于</router-link>
-                    </li>
-                    <!--<li><a href="#">注册</a></li>-->
-                    <!--<li><a href="#">登录</a></li>-->
-                </ul>
+
             </div>
         </div>
     </div>
@@ -39,14 +24,7 @@
         name: "Header"
     }
 </script>
-
 <style scoped lang="scss">
-    .clearfix::after {
-        content: '';
-        display: block;
-        clear: both;
-    }
-
     .header {
         background: #444444;
         width: 100%;
@@ -56,69 +34,39 @@
             padding: 5px;
             margin: auto;
             min-height: 40px;
+            &:after, &:before {
+                display: table;
+                line-height: 0;
+                content: "";
+            }
             .container {
+                display: flex;
+                justify-content: space-between;
                 width: 100%;
-                min-width: 960px;
                 max-width: 1400px;
                 margin: 0 auto;
+                flex-wrap: wrap;
                 .brand {
-                    display: block;
-                    width: 120px;
                     padding: 3px 20px;
                     margin-left: -20px;
                     line-height: 34px;
                     height: 34px;
                     color: #ccc;
                     font-weight: 700;
-                    float: left;
-                    > img {
+                    img {
                         width: 120px;
                     }
                 }
 
                 .navbar {
+                    margin-right: 20px;
                     list-style: none;
-                    float: right;
-                    > li {
-                        display: inline-flex;
-                        line-height: 20px;
-                        padding: 10px 15px;
-                        > a {
-                            text-decoration: none;
-                            color: #ccc;
-                            &:hover {
-                                color: #fff;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    @media (max-width: 979px) {
-        .header {
-            margin: 0 5px;
-            z-index: 999;
-            width: auto !important;
-            min-width: 310px;
-            .container {
-                width: 100%;
-                min-width: 0;
-                .brand{
-                    float: none;
-                    margin: 0 auto;
-                }
-                .navbar {
-                    display: none;
-                }
-                .navbar2 {
+                    display: flex;
                     clear: both;
-                    float: none;
-                    > li {
-                        display: inline-flex;
+                    li {
                         line-height: 20px;
                         padding: 10px 15px;
-                        > a {
+                        a {
                             text-decoration: none;
                             color: #ccc;
                             &:hover {
@@ -131,9 +79,17 @@
         }
     }
 
-    @media (min-width: 980px) {
-        .navbar2 {
-            display: none;
+    @media (max-width: 979px) {
+        .header {
+            margin: 0 5px;
+            .container {
+                width: 100%;
+                min-width: 0;
+                flex-wrap: wrap;
+                .navbar {
+                    clear: both;
+                }
+            }
         }
     }
 </style>
