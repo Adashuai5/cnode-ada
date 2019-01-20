@@ -10,15 +10,15 @@
                     </div>
                     <ul>
                         <li><span>发布于 {{post.create_at | formatDate}}</span></li>
-                        <li>&nbsp<span>作者
+                        <li>&nbsp;<span>作者
                             <router-link :to="{name:'user_info',params:{
                                 name: post.author.loginname
                             }}">
                                 {{post.author.loginname}}
                             </router-link>
                         </span></li>
-                        <li>&nbsp<span>{{post.visit_count}} 次浏览</span></li>
-                        <li>&nbsp<span>来自 {{post | tabFormatter}}</span></li>
+                        <li>&nbsp;<span>{{post.visit_count}} 次浏览</span></li>
+                        <li>&nbsp;<span>来自 {{post | tabFormatter}}</span></li>
                     </ul>
                 </div>
                 <div v-html="post.content" class="topic_content" id="content"></div>
